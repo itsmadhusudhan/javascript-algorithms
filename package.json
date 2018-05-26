@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint ./src/*",
     "test": "jest",
-    "ci": "yarn run lint && yarn run test -- --coverage"
+    "ci": "yarn run test -- --coverage"
   },
   "pre-commit": ["lint", "jest"],
   "repository": {
