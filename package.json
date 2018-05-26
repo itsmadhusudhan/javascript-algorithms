@@ -1,0 +1,30 @@
+{
+  "name": "js-algorithms-and-data-structures",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./src/*",
+    "test": "jest",
+    "ci": "yarn run lint && yarn run test -- --coverage"
+  },
+  "pre-commit": ["lint", "jest"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmadhusudhan/javascript-algorithms.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/itsmadhusudhan/javascript-algorithms#readme",
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.15.2",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "jest": "^23.0.0",
+    "pre-commit": "^1.2.2"
+  }
+}
