@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint ./src/*",
     "test": "jest",
+    "test-watch":"jest --watch",
     "ci": "yarn run test -- --coverage"
   },
   "pre-commit": [

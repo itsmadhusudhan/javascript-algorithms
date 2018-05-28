@@ -48,7 +48,7 @@ export default class LinkedList {
       return null;
     }
     let deletedNode=null;
-    //if head has to be deleted
+    //if head has to be deleted then make next node as head
     if(this.compare.equal(this.head.value,value)){
       deletedNode=this.head;
       this.head=this.head.next;
@@ -78,6 +78,74 @@ export default class LinkedList {
     return deletedNode;
   }
 
+  /**
+   * @return {LinkedListNode}
+   */
+  deleteTail(){
+    if(this.head===this.tail){
+      const deletedTail=this.tail;
+      this.head=null;
+      this.tail=null;
+      return deletedTail;
+    }
+
+    const deletedTail=this.tail;
+    let currentNode=this.head;
+    while(currentNode.next){
+      if(!currentNode.next.next){
+        currentNode.next=null;
+      }
+      else{
+        currentNode=currentNode.next;
+      }
+    }
+
+    this.tail=currentNode;
+    return deletedTail;
+
+  }
+
+  /**
+   * @return {LinkedListNode}
+   */
+  deleteHead(){
+    if(!this.head){
+      return null;
+    }
+    const deletedHead=this.head;
+
+    if(this.head.next){
+      this.head=this.head.next;
+    }else{
+      this.head=null;
+      this.tail=null;
+    }
+
+    return deletedHead;
+  }
+
+  /**
+   * @param {Object} findParams
+   * @param {*} findParams.value
+   * @param {function} findParams.callback
+   * @return {LinkedListNode}
+   */
+  find({value=undefined,callback=undefined}){
+    if(!this.head){
+      return null;
+    }
+    let currentNode=this.head;
+    while(currentNode){
+      if(callback && callback(currentNode.value)){
+        return currentNode;
+      }
+      if(value!==undefined && this.compare.equal(currentNode.value,value)){
+        return currentNode;
+      }
+      currentNode=currentNode.next;
+    }
+    return null;
+  }
 
    /**
     * @return {LinkedListNode[]}
