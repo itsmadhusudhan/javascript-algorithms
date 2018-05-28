@@ -18,8 +18,65 @@ export default class LinkedList {
    * @param {*} value
    * @param {LinkedList}
    */
+  prepend(value){
+    this.head=new LinkedListNode(value,this.head);
+    return this;
+  }
+
+  /**
+   * @param {*} value
+   * @param {LinkedList}
+   */
+  append(value){
+    const newNode=new LinkedListNode(value);
+    if(!this.head){
+      this.head=newNode;
+      this.tail=newNode;
+      return this;
+    }
+    this.tail.next=newNode;
+    this.tail=newNode;
+    return this;
+  }
+
+  /**
+   * @param {*} value
+   * @return {LinkedListNode}
+   */
+  delete(value){
+    if(!this.head){
+      return null;
+    }
+    let deletedNode=null;
+    //if head has to be deleted
+    if(this.compare.equal(this.head.value,value)){
+      deletedNode=this.head;
+      this.head=this.head.next;
+    }
 
 
+    let currentNode=this.head;
+    
+    //if next node has to be deleted
+    if(currentNode!==null){
+      while(currentNode.next){
+        if(this.compare.equal(currentNode.next.value,value)){
+          deletedNode=currentNode.next;
+          currentNode.next=currentNode.next.next;
+        }
+        else{
+          currentNode=currentNode.next;
+        }
+      }
+    }
+
+    //check if tail must be deleted
+    if(this.compare.equal(this.tail.value,value)){
+      this.tail=currentNode;
+    }
+
+    return deletedNode;
+  }
 
 
    /**
