@@ -1,6 +1,6 @@
 # Queue
 
-Queue is a data structure in which the element is add at the rear end.
+Queue is an abstract data structure in which the element is add at the rear end.
 
 It follows `First In First Out (FIFO)`.
 
