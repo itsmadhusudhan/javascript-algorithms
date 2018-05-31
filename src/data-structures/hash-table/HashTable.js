@@ -18,31 +18,34 @@ export default class HashTable {
     return hash % this.buckets.length;
   }
 
-  insert(key,value){
-    const bucketLinkedList=this.buckets[this.hash(key)];
-    const node=bucketLinkedList.find({callback:nodeValue=>nodeValue.key===key});
-    if(!node){
-      bucketLinkedList.append({key,value});
+  insert(key, value) {
+    const bucketLinkedList = this.buckets[this.hash(key)];
+    const node = bucketLinkedList.find({
+      callback: nodeValue => nodeValue.key === key
+    });
+    if (!node) {
+      bucketLinkedList.append({ key, value });
+    } else {
+      node.value.value = value;
     }
-    else{
-      node.value.value=value;
-    }
-
   }
 
-  delete(key){
-    const bucketLinkedList=this.buckets[this.hash(key)];
-    const node=bucketLinkedList.find({callback:nodeValue=>nodeValue.key===key});
-    if(node){
+  delete(key) {
+    const bucketLinkedList = this.buckets[this.hash(key)];
+    const node = bucketLinkedList.find({
+      callback: nodeValue => nodeValue.key === key
+    });
+    if (node) {
       return bucketLinkedList.delete(node.value);
     }
     return null;
   }
 
-  get(key){
-    const bucketLinkedList=this.buckets[this.hash(key)];
-    const node=bucketLinkedList.find({callback:nodeValue=>nodeValue.key===key});
-    return node?node.value:null;
+  get(key) {
+    const bucketLinkedList = this.buckets[this.hash(key)];
+    const node = bucketLinkedList.find({
+      callback: nodeValue => nodeValue.key === key
+    });
+    return node ? node.value : null;
   }
-
 }

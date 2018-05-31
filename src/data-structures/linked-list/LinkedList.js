@@ -6,9 +6,9 @@ export default class LinkedList {
    * @param {Function} [comparatorFunction]
    */
   constructor(comparatorFunction) {
-    /**@var LinkedListNode */
+    /** @var LinkedListNode */
     this.head = null;
-    /**@var LinkedListNode */
+    /** @var LinkedListNode */
     this.tail = null;
 
     this.compare = new Comparator(comparatorFunction);
@@ -48,7 +48,7 @@ export default class LinkedList {
       return null;
     }
     let deletedNode = null;
-    //if head has to be deleted then make next node as head
+    // if head has to be deleted then make next node as head
     if (this.compare.equal(this.head.value, value)) {
       deletedNode = this.head;
       this.head = this.head.next;
@@ -56,7 +56,7 @@ export default class LinkedList {
 
     let currentNode = this.head;
 
-    //if next node has to be deleted
+    // if next node has to be deleted
     if (currentNode !== null) {
       while (currentNode.next) {
         if (this.compare.equal(currentNode.next.value, value)) {
@@ -68,7 +68,7 @@ export default class LinkedList {
       }
     }
 
-    //check if tail must be deleted
+    // check if tail must be deleted
     if (this.compare.equal(this.tail.value, value)) {
       this.tail = currentNode;
     }

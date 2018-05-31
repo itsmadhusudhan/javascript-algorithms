@@ -1,5 +1,4 @@
 import LinkedList from '../linked-list/LinkedList';
-import LinkedListNode from '../linked-list/LinkedListNode';
 
 export default class Stack {
   constructor() {
